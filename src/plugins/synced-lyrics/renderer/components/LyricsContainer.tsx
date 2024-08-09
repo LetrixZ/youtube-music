@@ -92,7 +92,7 @@ export const LyricsContainer = () => {
             }
           >
             <yt-formatted-string
-              class="warning-lyrics description ytmusic-description-shelf-renderer"
+              class="warning-lyrics instrumental description ytmusic-description-shelf-renderer"
               text={{
                 runs: [
                   {

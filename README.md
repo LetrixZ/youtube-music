@@ -11,6 +11,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/th-ch/youtube-music/badge.svg)](https://snyk.io/test/github/th-ch/youtube-music)
 
 </div>
+This is a Modified version of Youtube Music that features API support, improved synced lyrics, and other small improvements. - These are not properly coded changes as far as im concerned but it works for me so ¯\_(ツ)_/¯
 
 ![Screenshot](web/screenshot.jpg "Screenshot")
 
@@ -18,7 +19,7 @@
 <div align="center">
 	<a href="https://github.com/th-ch/youtube-music/releases/latest">
 		<img src="web/youtube-music.svg" width="400" height="100" alt="YouTube Music SVG">
-	</a>
+	</a>v
 </div>
 
 Read this in other languages: [🇰🇷](./docs/readme/README-ko.md), [🇮🇸](./docs/readme/README-is.md), [🇨🇱 🇪🇸](./docs/readme/README-es.md), [🇷🇺](./docs/readme/README-ru.md)

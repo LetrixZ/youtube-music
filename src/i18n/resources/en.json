@@ -279,6 +279,42 @@
       },
       "name": "Ambient Mode"
     },
+    "api-server": {
+      "description": "Remote Control Youtube Music",
+      "name": "API Server",
+      "menu": {
+        "hostname": "Hostname",
+        "port": "Port",
+        "auth-strategy": {
+          "label": "Authentication Strategy",
+          "submenu": {
+            "auth-at-first": {
+              "label": "Authenticate at First",
+              "tooltip": "All new clients have to be approved before first time connecting"
+            },
+            "none": {
+              "label": "None"
+            }
+          }
+        }
+      },
+      "prompt": {
+        "hostname": {
+          "title": "Choose a Hostname",
+          "label": "Hostname"
+        },
+        "port": {
+          "title": "Choose a Port",
+          "label": "Port"
+        },
+        "request": {
+          "title": "Incoming API Access Request",
+          "message": "Allow {{id}} access to control Youtube Music?",
+          "ok": "Allow",
+          "cancel": "Deny"
+        }
+      }
+    },
     "audio-compressor": {
       "description": "Apply compression to audio (lowers the volume of the loudest parts of the signal and raises the volume of the softest parts)",
       "name": "Audio Compressor"
