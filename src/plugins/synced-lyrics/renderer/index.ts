@@ -14,6 +14,8 @@ import type { SyncedLyricsPluginConfig } from '../types';
 
 export let _ytAPI: YoutubePlayer | null = null;
 
+let timeOffset = 0;
+
 export const renderer = createRenderer<{
   observerCallback: MutationCallback;
   hasAddedEvents: boolean;
@@ -55,7 +57,6 @@ export const renderer = createRenderer<{
   async videoDataChange() {
     if (!this.hasAddedEvents) {
       const video = document.querySelector('video');
-
       video?.addEventListener('timeupdate', this.progressCallback);
 
       if (video) this.hasAddedEvents = true;
@@ -76,8 +77,8 @@ export const renderer = createRenderer<{
   progressCallback(evt: Event) {
     switch (evt.type) {
       case 'timeupdate': {
-        const video = evt.target as HTMLVideoElement;
-        setCurrentTime(video.currentTime * 1000);
+        const video = evt.target as HTMLVideoElement; // Internally, youtube stiches videos/songs together as one video stream, leading the start of one song (when playing after another song) to have a much bigger current time than 0
+        setCurrentTime((video.currentTime - timeOffset) * 1000);
         break;
       }
     }
@@ -87,6 +88,8 @@ export const renderer = createRenderer<{
     setConfig(await ctx.getConfig());
 
     ctx.ipc.on('ytmd:update-song-info', async (info: SongInfo) => {
+      const video = document.querySelector('video');
+      timeOffset = video!.currentTime;
       await makeLyricsRequest(info);
     });
   },
