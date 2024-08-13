@@ -11,7 +11,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/th-ch/youtube-music/badge.svg)](https://snyk.io/test/github/th-ch/youtube-music)
 
 </div>
-This is a Modified version of Youtube Music that features API support, improved synced lyrics, and other small improvements. - These are not properly coded changes as far as im concerned but it works for me so ¯\_(ツ)_/¯
+This is a Modified version of Youtube Music Desktop that features API support, improved synced lyrics, and other small improvements. - These are not properly coded changes as far as im concerned but it works for me so ¯\_(ツ)_/¯
 
 ![Screenshot](web/screenshot.jpg "Screenshot")
 
