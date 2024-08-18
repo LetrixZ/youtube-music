@@ -146,13 +146,16 @@ export default (api: YoutubePlayer) => {
   });
 
   const playPausedHandler = (e: Event, status: string) => {
+    let timeString = document.querySelector('#left-controls > span')!.textContent!.split(" / ")[0].split(":")
+    let elapsedSeconds = (parseInt(timeString[0])*60)+(parseInt(timeString[1]))
     if (
       e.target instanceof HTMLVideoElement &&
-      Math.round(e.target.currentTime) > 0
+      Math.round(elapsedSeconds) > 0
     ) {
+      console.log(Math.floor(elapsedSeconds))
       window.ipcRenderer.send('ytmd:play-or-paused', {
         isPaused: status === 'pause',
-        elapsedSeconds: Math.floor(e.target.currentTime),
+        elapsedSeconds: Math.floor(elapsedSeconds),
       });
     }
   };

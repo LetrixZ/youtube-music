@@ -182,7 +182,9 @@ export const getLyricsList = async (
       line.duration = Infinity;
       break;
     }
-
+    if (line.text == "") {
+      line.text = config()!.defaultTextString;
+    }
     line.duration = next.timeInMs - line.timeInMs;
   }
 

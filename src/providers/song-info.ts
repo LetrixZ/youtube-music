@@ -147,7 +147,13 @@ const handleData = async (
 
     win.webContents.send('ytmd:update-song-info', songInfo);
   }
+  ipcMain.on('ytmd:player-api-loaded', () => {
+    win.webContents.send('ytmd:setup-time-changed-listener');
+  });
 
+  ipcMain.on('ytmd:time-changed', (_, t: number) => {
+    if (t > songInfo.elapsedSeconds!) songInfo.elapsedSeconds = t;
+  });
   return songInfo;
 };
 
@@ -172,7 +178,6 @@ const registerProvider = (win: BrowserWindow) => {
         return songInfo;
       },
     );
-
     if (tempSongInfo) {
       for (const c of callbacks) {
         c(tempSongInfo, 'ytmd:video-src-changed');

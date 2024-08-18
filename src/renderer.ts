@@ -45,6 +45,12 @@ async function onApiLoaded() {
   window.ipcRenderer.on('ytmd:next-video', () => {
     document.querySelector<HTMLElement>('.next-button.ytmusic-player-bar')?.click();
   });
+  window.ipcRenderer.on('ytmd:play', (_) => {
+    api?.playVideo();
+  });
+  window.ipcRenderer.on('ytmd:pause', (_) => {
+    api?.pauseVideo();
+  });
   window.ipcRenderer.on('ytmd:toggle-play', (_) => {
     if (api?.getPlayerState() === 2) api?.playVideo();
     else api?.pauseVideo();
@@ -93,7 +99,7 @@ async function onApiLoaded() {
   };
 
   window.ipcRenderer.on('ytmd:get-fullscreen', (event) => {
-    event.sender.send('ytmd:set-fullscreen', isFullscreen());
+    window.ipcRenderer.send('ytmd:set-fullscreen', isFullscreen());
   });
 
   window.ipcRenderer.on('ytmd:click-fullscreen-button', (_, fullscreen: boolean | undefined) => {
@@ -106,7 +112,7 @@ async function onApiLoaded() {
 
   window.ipcRenderer.on('ytmd:get-queue', (event) => {
     const queue = document.querySelector<QueueElement>('#queue');
-    event.sender.send('ytmd:get-queue-response', {
+    window.ipcRenderer.send('ytmd:get-queue-response', {
       items: queue?.queue.getItems(),
       autoPlaying: queue?.queue.autoPlaying,
       continuation: queue?.queue.continuation,
